@@ -13,6 +13,7 @@ def select_function():
     print("7. Square Root")
     print("8. Cubic")
     print("9. Expontential")
+    print("10. Logarithmic")
 
     print("\n")
 
@@ -189,11 +190,25 @@ def exponential():
 
         current_x = meow.xcor() - graph_origin[0]
         current_x = current_x * h_stretch
-        y_shift =   (math.e**current_x) * v_scale
+        y_shift = (math.e**current_x) * v_scale
 
 
         meow.setpos(meow.xcor(), graph_origin[1] + y_shift)
 
+def logarithmic():
+    turtle_to_origin()
+    step = 1
+    y_amp = 20
+    h_scale = 20
+
+    while (meow.xcor() < top_right_graph[0]):
+        meow.forward(step)
+
+        current_x = meow.xcor() - graph_origin[0]
+        math_x = 1 + (current_x / h_scale)
+        y_shift = math.log(math_x) * y_amp
+
+        meow.setpos(meow.xcor(), graph_origin[1] + y_shift)
 
 
 draw_x_y(300)
@@ -216,5 +231,7 @@ elif choice == "8":
     cubic()
 elif choice == "9":
     exponential()
+elif choice == "10":
+    logarithmic()
 
 turtle.done()
