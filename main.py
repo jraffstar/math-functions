@@ -4,8 +4,12 @@ import math
 def select_function():
     print("What function do you want to visualise? \n")
 
-    print("1. Linear \n")
+    print("1. Linear")
     print("2. Quadratic")
+    print("3. Sine")
+    print("4. Cosine")
+    print("5. Tangent")
+    print("\n")
 
     choice = input("> ")
 
@@ -62,13 +66,67 @@ def quadratic():
 
         meow.setpos(meow.xcor(), graph_origin[1] + up_amount)
 
+def sine():
+    turtle_to_origin()
+
+    wavelength = 50 # increase to spread horizontally
+    v_amp = 50
+    step = 1
+
+    while (meow.xcor() < top_right_graph[0]):
+        meow.forward(step)
+
+        current_x = meow.xcor() - graph_origin[0]
+        angle = 2 * math.pi * current_x / wavelength
+        v_shift = math.sin(angle) * v_amp
+
+        meow.setpos(meow.xcor(), graph_origin[1] + v_shift)
+
+def cosine():
+    turtle_to_origin()
+
+    wavelength = 50 # increase to spread horizontally
+    v_amp = 50
+    step = 1
+
+    while (meow.xcor() < top_right_graph[0]):
+        meow.forward(step)
+
+        current_x = meow.xcor() - graph_origin[0]
+        angle = 2 * math.pi * current_x / wavelength
+        v_shift = math.cos(angle) * v_amp
+
+        meow.setpos(meow.xcor(), graph_origin[1] + v_shift)
+
+def tangent():
+    turtle_to_origin()
+
+    wavelength = 100 # increase to spread horizontally
+    v_amp = 20
+    step = 1
+
+    while (meow.xcor() < top_right_graph[0]):
+        meow.forward(step)
+
+        current_x = meow.xcor() - graph_origin[0]
+        angle = 2 * math.pi * current_x / wavelength
+        v_shift = math.tan(angle) * v_amp
+
+        meow.setpos(meow.xcor(), graph_origin[1] + v_shift)
+
 
 
 draw_x_y(300)
 choice = select_function()
 if choice == "1":
     x_equals_y()
-if choice == "2":
+elif choice == "2":
     quadratic()
+elif choice == "3":
+    sine()
+elif choice == "4":
+    cosine()
+elif choice == "5":
+    tangent()
 
 turtle.done()
