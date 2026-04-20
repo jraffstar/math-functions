@@ -10,6 +10,7 @@ def select_function():
     print("4. Cosine")
     print("5. Tangent")
     print("6. Reciprocal")
+    print("7. Square Root")
     print("\n")
 
     choice = input("> ")
@@ -143,6 +144,20 @@ def reciprocal():
             y_pos = (v_scale / current_x)
             meow.setpos(meow.xcor(), graph_origin[1] + y_pos)
 
+def square_root():
+    turtle_to_origin()
+
+    step = 1
+    v_scale = 5
+
+    while (meow.xcor() < top_right_graph[0]):
+        meow.forward(step)
+
+        current_x = meow.xcor() - graph_origin[0]
+        y_shift = math.sqrt(current_x) * v_scale
+
+        meow.setpos(meow.xcor(), graph_origin[1] + y_shift)
+
 
 draw_x_y(300)
 choice = select_function()
@@ -158,5 +173,7 @@ elif choice == "5":
     tangent()
 elif choice == "6":
     reciprocal()
+elif choice == "7":
+    square_root()
 
 turtle.done()
