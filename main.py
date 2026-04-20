@@ -11,6 +11,9 @@ def select_function():
     print("5. Tangent")
     print("6. Reciprocal")
     print("7. Square Root")
+    print("8. Cubic")
+    print("9. Expontential")
+
     print("\n")
 
     choice = input("> ")
@@ -158,6 +161,40 @@ def square_root():
 
         meow.setpos(meow.xcor(), graph_origin[1] + y_shift)
 
+def cubic():
+    turtle_to_origin()
+    step = 1
+    h_stretch = 100
+
+    while (meow.ycor() < top_right_graph[1]):
+        
+
+        meow.forward(step)
+
+        current_x = meow.xcor() - graph_origin[0]
+        current_x = current_x / h_stretch
+        y_shift = (current_x**3) * graph_length
+
+        meow.setpos(meow.xcor(), graph_origin[1] + y_shift)
+
+def exponential():
+    turtle_to_origin()
+
+    step = 1
+    h_stretch = 0.01
+    v_scale = 100
+
+    while (meow.ycor() < top_right_graph[1]):
+        meow.forward(step)
+
+        current_x = meow.xcor() - graph_origin[0]
+        current_x = current_x * h_stretch
+        y_shift =   (math.e**current_x) * v_scale
+
+
+        meow.setpos(meow.xcor(), graph_origin[1] + y_shift)
+
+
 
 draw_x_y(300)
 choice = select_function()
@@ -175,5 +212,9 @@ elif choice == "6":
     reciprocal()
 elif choice == "7":
     square_root()
+elif choice == "8":
+    cubic()
+elif choice == "9":
+    exponential()
 
 turtle.done()
